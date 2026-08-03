@@ -1,0 +1,77 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() {
+      return request.auth != null;
+    }
+    function isSelf(uid) {
+      return signedIn() && request.auth.uid == uid;
+    }
+    function myRole() {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role;
+    }
+    function isAdmin() {
+      return signedIn() && myRole() == 'admin';
+    }
+    function isTeacherOrAdmin() {
+      return signedIn() && (myRole() == 'teacher' || myRole() == 'admin');
+    }
+
+    // ---- users/{uid} — profile doc ----
+    // Owner can read/update their own profile (but not change their own role —
+    // only an admin can promote/demote). Admins can read and update any profile
+    // (role changes, teacher verification). Anyone signed in can read basic
+    // profile fields of other users only via the admin path — student profiles
+    // are otherwise private.
+    match /users/{uid} {
+      allow read: if isSelf(uid) || isAdmin();
+      allow create: if isSelf(uid);
+      allow update: if (isSelf(uid) && request.resource.data.role == resource.data.role)
+                    || isAdmin();
+      allow delete: if isAdmin();
+
+      // Private per-user subcollections: sessions, quizzes, attempts, decks,
+      // notes, progress, meta (stats + server-side rate-limit counters).
+      match /{subcollection}/{docId} {
+        allow read, write: if isSelf(uid);
+      }
+    }
+
+    // ---- classes/{id} — teacher-owned, students can read their own class ----
+    match /classes/{classId} {
+      allow read: if signedIn();
+      allow create: if isTeacherOrAdmin();
+      allow update, delete: if isAdmin() || (signedIn() && resource.data.teacherUid == request.auth.uid);
+    }
+
+    // ---- schools/{id} — admin-managed, everyone can read (e.g. signup dropdown) ----
+    match /schools/{id} {
+      allow read: if signedIn();
+      allow write: if isAdmin();
+    }
+
+    // ---- announcements/{id} — admin-authored, all signed-in users read ----
+    match /announcements/{id} {
+      allow read: if signedIn();
+      allow write: if isAdmin();
+    }
+
+    // ---- feedback/{id} — any signed-in user can submit; only admin can read/manage ----
+    match /feedback/{id} {
+      allow create: if signedIn() && request.resource.data.fromUid == request.auth.uid;
+      allow read, update, delete: if isAdmin();
+    }
+
+    // ---- moderationQueue/{id} — admin only ----
+    match /moderationQueue/{id} {
+      allow read, write: if isAdmin();
+    }
+
+    // ---- settings/featureFlags — everyone reads, only admin writes ----
+    match /settings/{doc} {
+      allow read: if signedIn();
+      allow write: if isAdmin();
+    }
+  }
+}

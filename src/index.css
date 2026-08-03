@@ -1,0 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body { margin: 0; padding: 0; background: #0A0B18; }
+#root { min-height: 100vh; }
