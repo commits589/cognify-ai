@@ -15,6 +15,8 @@ const { verifyAuthHeader, checkAndBumpRateLimit } = require('./_firebaseAdmin.cj
 const GEMINI_MODEL = 'gemini-2.0-flash';
 const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`;
 
+
+
 // Frontend sends "Anthropic-shaped" content blocks for attachments (this app was
 // originally wired for Claude); translate them into Gemini's inlineData parts so the
 // rest of the frontend code doesn't need to change.
@@ -80,7 +82,8 @@ exports.handler = async (event) => {
   }));
 
   try {
-    const res = await fetch(`${GEMINI_URL}?key=${apiKey}`, {
+    const res =
+await fetch(`${GEMINI_URL}?key=${apiKey}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

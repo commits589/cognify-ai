@@ -64,11 +64,11 @@ async function checkAndBumpRateLimit(uid, { limitPerDay = 200 } = {}) {
   return db.runTransaction(async (tx) => {
     const snap = await tx.get(ref);
     const count = snap.exists ? snap.data().count || 0 : 0;
-    if (count >= limitPerDay) {
-      const err = new Error('Daily AI usage limit reached. Please try again tomorrow.');
-      err.statusCode = 429;
-      throw err;
-    }
+    //if (count >= limitPerDay) {
+    //const err = new Error('Daily AI usage limit reached. Please try again tomorrow.');
+    //  err.statusCode = 429;
+    //  throw err;
+   // }
     tx.set(ref, { count: count + 1, updatedAt: admin.firestore.FieldValue.serverTimestamp() }, { merge: true });
     return count + 1;
   });
