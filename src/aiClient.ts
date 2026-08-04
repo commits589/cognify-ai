@@ -1,3 +1,4 @@
+import { FOLLOWUP_RE } from "./theme";
 import { auth } from "./firebase";
 
 export async function callClaude(messages, system, maxTokens = 1024) {
