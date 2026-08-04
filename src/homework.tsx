@@ -1,3 +1,4 @@
+import { GLASS_BORDER } from "./theme";
 import { useState, useEffect, useRef } from "react";
 import { Mic, Volume2, Paperclip } from "lucide-react";
 import { fileToBase64, solveHomework } from "./aiClient";

@@ -1,3 +1,4 @@
+import { GLASS_BORDER } from "./theme";
 import { useState, useEffect, useRef } from "react";
 import { Mic, Sparkles, Square, Check, Download, Play, Pause } from "lucide-react";
 import { askVoiceTutor, downloadText, summarizeVoiceSession } from "./aiClient";

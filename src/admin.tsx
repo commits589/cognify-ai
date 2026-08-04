@@ -1,3 +1,4 @@
+import { GLASS_BORDER } from "./theme";
 import { useState } from "react";
 import { BarChart, Bar, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 import { X, ChevronLeft, Check, Download, ToggleLeft } from "lucide-react";

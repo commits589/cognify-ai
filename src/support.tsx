@@ -1,3 +1,4 @@
+import { GLASS_BORDER } from "./theme";
 import { useState } from "react";
 import { MessageSquare, BookOpen, Layers, Volume2, GraduationCap, Sparkles, Square, Search, Accessibility, Eye } from "lucide-react";
 import { callClaude } from "./aiClient";

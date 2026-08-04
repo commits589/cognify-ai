@@ -1,3 +1,4 @@
+import { GLASS_BORDER } from "./theme";
 import { useState } from "react";
 import { X, ChevronLeft, FileText, Download, Trash2 } from "lucide-react";
 import { downloadText } from "./aiClient";

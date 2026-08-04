@@ -1,3 +1,4 @@
+import { GLASS_BORDER } from "./theme";
 import { MessageSquare, BookOpen, Layers, Users, ShieldCheck, Mic, GraduationCap, Sparkles, Calculator, FlaskConical, SpellCheck, PenLine, Network, Code2, History, Globe, HelpCircle, ClipboardList, Presentation as PresentationIcon, ClipboardCheck, FileQuestion, Table, UserCheck, School as SchoolIcon, Megaphone, Flag, ToggleLeft, BarChart3, FileBarChart2 } from "lucide-react";
 
 export const C = {

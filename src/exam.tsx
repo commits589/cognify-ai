@@ -1,3 +1,4 @@
+import { GLASS_BORDER } from "./theme";
 import { useState } from "react";
 import { Clock } from "lucide-react";
 import { generateBoardExamPlan } from "./aiClient";

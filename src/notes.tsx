@@ -1,3 +1,4 @@
+import { GLASS_BORDER } from "./theme";
 import { useState } from "react";
 import { ChevronLeft, Check } from "lucide-react";
 import { generateFullNotes } from "./aiClient";

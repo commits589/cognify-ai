@@ -1,3 +1,4 @@
+import { GLASS_BORDER } from "./theme";
 import { useState } from "react";
 import { AIToolDetail } from "./aiTools";
 import { C, GRADIENT, TEACHER_CARDS } from "./theme";

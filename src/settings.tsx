@@ -1,3 +1,4 @@
+import { GLASS_BORDER } from "./theme";
 import { useState } from "react";
 import { MessageSquare, BookOpen, Layers, TrendingUp, Users, ShieldCheck, LogOut, Volume2, GraduationCap, Sparkles, Accessibility, Eye, Globe, Download, Bell, Lock, Sun, Moon, Trash2, Megaphone } from "lucide-react";
 import { downloadText } from "./aiClient";

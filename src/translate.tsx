@@ -1,3 +1,4 @@
+import { GLASS_BORDER } from "./theme";
 import { useState, useEffect } from "react";
 import { Mic, Volume2, Copy, Share2, ArrowRightLeft } from "lucide-react";
 import { translateText } from "./aiClient";

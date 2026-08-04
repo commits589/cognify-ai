@@ -1,3 +1,4 @@
+import { GLASS_BORDER } from "./theme";
 import { useState } from "react";
 import { Plus } from "lucide-react";
 import { generateFlashcards } from "./aiClient";
