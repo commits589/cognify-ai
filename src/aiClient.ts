@@ -149,7 +149,7 @@ export async function streamTutor(history, subject, gradeLevel, a11y, lang, { on
     content: m.role === "user" ? buildUserContent(m.content, m.attachments) : m.content,
   }));
   const raw = await streamClaude(msgs, tutorSystemPrompt(subject, gradeLevel, a11y, lang), {
-    maxTokens: 1900,
+    maxTokens: 1000,
     signal,
     onDelta: (full) => onDelta?.(extractFollowUps(full).content),
   });
