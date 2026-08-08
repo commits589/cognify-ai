@@ -13,7 +13,7 @@ export function AdminPanel(props) {
     aiRequestCount, progress } = props;
   const [section, setSection] = useState("hub");
 
-  if (user.role !== "admin") {
+  if (user.role !== "admin" || user.email !== "girishpidshetti@gmail.com") {
     return <div className="px-6 py-20 text-center"><p style={{ color: C.flag }}>Admins only — you don't have access to this page.</p></div>;
   }
 
