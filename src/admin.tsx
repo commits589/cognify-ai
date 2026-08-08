@@ -18,8 +18,10 @@ export function AdminPanel(props) {
   }
 
   const inputClass = "border rounded px-3 py-2 w-full";
+const back = () => setSection("hub");
 
-  if (section !== "hub") {
+if (section !== "hub") {
+
     return (
       <div className="px-4 md:px-8 py-6 md:py-8 max-w-5xl mx-auto">
         <button onClick={back} className="flex items-center gap-1 text-xs mb-4" style={{ color: C.inkSoft }}><ChevronLeft size={14} /> Admin panel</button>
