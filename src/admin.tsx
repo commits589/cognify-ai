@@ -1,3 +1,4 @@
+
 import { GLASS_BORDER } from "./theme";
 import { useState } from "react";
 import { BarChart, Bar, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
@@ -16,7 +17,7 @@ export function AdminPanel(props) {
     return <div className="px-6 py-20 text-center"><p style={{ color: C.flag }}>Admins only — you don't have access to this page.</p></div>;
   }
 
-  const back = () => setSection("hub");
+  const inputClass = "border rounded px-3 py-2 w-full";
 
   if (section !== "hub") {
     return (
@@ -439,3 +440,4 @@ export function RolesPermissions({ user, demoUsers, setDemoUsers }) {
 }
 
 /* ---------------------------------- Profile ---------------------------------- */
+
