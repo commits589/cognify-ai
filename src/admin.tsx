@@ -96,6 +96,7 @@ if (section !== "hub") {
 }
 
 export function UserManagementTable({ demoUsers, setDemoUsers, user, roleFilter }) {
+const inputClass = "border rounded px-3 py-2 w-full";
   const [query, setQuery] = useState("");
   const titles = { all: "User Management", student: "Student Management", teacher: "Teacher Management" };
   const base = roleFilter === "all" ? demoUsers : demoUsers.filter((u) => u.role === roleFilter);
@@ -134,6 +135,7 @@ export function UserManagementTable({ demoUsers, setDemoUsers, user, roleFilter 
 }
 
 export function SchoolManagement({ demoUsers, schools, setSchools }) {
+const inputClass = "border rounded px-3 py-2 w-full";
   const [newSchool, setNewSchool] = useState("");
   function addSchool() {
     if (!newSchool.trim() || schools.includes(newSchool.trim())) return;
@@ -290,6 +292,7 @@ export function FeatureControls({ featureFlags, setFeatureFlags }) {
 }
 
 export function AnnouncementsAdmin({ announcements, setAnnouncements, user }) {
+const inputClass = "border rounded px-3 py-2 w-full";
   const [text, setText] = useState("");
   function post() {
     if (!text.trim()) return;
