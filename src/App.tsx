@@ -110,7 +110,7 @@ export default function App() {
       setStreak(data.streak || 0);
       setLastActive(data.lastActive || null);
       setAppDataLoaded(true);
-      updateUserProfile(user.uid, { lastActiveAt: new Date().toISOString() }).catch(() => {});
+      updateUserProfile(user.uid, { lastActiveAt: new Date().toISOString() }).catch((e) => console.log("POST ANNOUNCEMENT ERROR:", e));
     })();
     return () => { cancelled = true; };
   }, [user?.uid]);
