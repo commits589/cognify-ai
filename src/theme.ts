@@ -192,6 +192,25 @@ export const LANGUAGES = [...INDIAN_LANGUAGES, "Spanish", "French", "Mandarin Ch
 
 export const ALL_LANGUAGES = ["English", ...LANGUAGES];
 
+export const LANG_CODES = {
+  "English": "en-US",
+  "Kannada": "kn-IN",
+  "Hindi": "hi-IN",
+  "Tamil": "ta-IN",
+  "Telugu": "te-IN",
+  "Marathi": "mr-IN",
+  "Malayalam": "ml-IN",
+  "Spanish": "es-ES",
+  "French": "fr-FR",
+  "Mandarin Chinese": "zh-CN",
+  "Arabic": "ar-SA",
+  "Portuguese": "pt-PT",
+  "German": "de-DE",
+  "Japanese": "ja-JP",
+  "Korean": "ko-KR",
+  "Vietnamese": "vi-VN",
+};
+
 export const TEACHER_CARDS = [
   { key: "lesson-planner", title: "Create Lesson Plans", desc: "Objectives, materials, steps, assessment.", icon: ClipboardList, color: "#8B5CF6", type: "ai-tool" },
   { key: "worksheet", title: "Generate Worksheets", desc: "Practice problems with an answer key.", icon: ClipboardCheck, color: "#34D399", type: "ai-tool" },

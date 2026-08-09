@@ -38,11 +38,12 @@ export function useSpeechSynthesis() {
   const rateRef = useRef(1);
   rateRef.current = rate;
 
-  const speak = (text) => {
+  const speak = (text, lang) => {
     if (!supported) return;
     window.speechSynthesis.cancel();
     const u = new SpeechSynthesisUtterance(text);
     u.rate = rateRef.current;
+    if (lang) u.lang = lang;
     u.onstart = () => { setSpeaking(true); setPaused(false); };
     u.onend = () => { setSpeaking(false); setPaused(false); };
     u.onerror = () => { setSpeaking(false); setPaused(false); };

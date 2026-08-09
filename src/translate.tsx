@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { Mic, Volume2, Copy, Share2, ArrowRightLeft } from "lucide-react";
 import { translateText } from "./aiClient";
 import { useSpeechRecognition, useSpeechSynthesis } from "./hooks";
-import { ALL_LANGUAGES, C, inputClass, inputStyle } from "./theme";
+import { ALL_LANGUAGES, LANG_CODES, C, inputClass, inputStyle } from "./theme";
 import { Btn, Card, PageHeader, Skeleton, Spinner } from "./ui";
 
 export function Translate({ logActivity }) {
@@ -86,7 +86,7 @@ export function Translate({ logActivity }) {
             {result && (
               <div className="flex items-center gap-1.5">
                 <button onClick={() => navigator.clipboard?.writeText(result)} aria-label="Copy translation" className="w-7 h-7 rounded-full flex items-center justify-center" style={{ color: C.inkSoft }}><Copy size={13} /></button>
-                {tts.supported && <button onClick={() => tts.speak(result)} aria-label="Speak translation" className="w-7 h-7 rounded-full flex items-center justify-center" style={{ color: C.inkSoft }}><Volume2 size={13} /></button>}
+                {tts.supported && <button onClick={() => tts.speak(result,LANG_CODES[toLang])} aria-label="Speak translation" className="w-7 h-7 rounded-full flex items-center justify-center" style={{ color: C.inkSoft }}><Volume2 size={13} /></button>}
                 <button onClick={shareResult} aria-label="Share translation" className="w-7 h-7 rounded-full flex items-center justify-center" style={{ color: C.inkSoft }}><Share2 size={13} /></button>
               </div>
             )}
