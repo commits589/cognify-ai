@@ -234,7 +234,7 @@ export default function App() {
     if (!user) return;
     postAnnouncement(text, user.displayName).then((id) => {
       setAnnouncements((prev) => [{ id, text, author: user.displayName, active: true, createdAt: Date.now() }, ...prev]);
-    }).catch(() => {});
+    }).catch((e) => console.log("POST ANNOUNCEMENT ERROR:", e));
   }
   function setAnnouncementsWrapped(updater) {
     setAnnouncements((prev) => {
