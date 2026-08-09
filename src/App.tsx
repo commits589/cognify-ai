@@ -488,7 +488,7 @@ export default function App() {
           {view === "mindmap-tool" && <MindMapGenerator logActivity={logActivity} />}
           {view === "voice" && (featureFlags.voiceLearning ? <VoiceLearning logActivity={logActivity} savedNotes={savedNotes} setSavedNotes={setSavedNotes} /> : <FeatureDisabledNotice feature="Voice Learning" setView={setView} />)}
           {view === "exam-mode" && (featureFlags.boardExamMode ? <BoardExamMode user={user} logActivity={logActivity} setQuizzes={setQuizzes} setView={setView} /> : <FeatureDisabledNotice feature="Board Exam Mode" setView={setView} />)}
-          {view === "teacher-dashboard" && user.role === "teacher" && <TeacherDashboard setView={setView} logActivity={logActivity} classes={classes} />}
+          {view === "teacher-dashboard" && user.role === "teacher" && <TeacherDashboard setView={setView} logActivity={logActivity} classes={classes} announcements={announcements} />}
           {view === "student-performance" && <StudentPerformance classes={classes} user={user} />}
           {view === "privacy" && (
             <PrivacyPolicy

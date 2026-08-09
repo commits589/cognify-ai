@@ -3,8 +3,9 @@ import { useState } from "react";
 import { AIToolDetail } from "./aiTools";
 import { C, GRADIENT, TEACHER_CARDS } from "./theme";
 import { Btn, Card, Empty, PageHeader, Pill } from "./ui";
+import { AnnouncementBanner } from "./dashboard";
 
-export function TeacherDashboard({ setView, logActivity, classes }) {
+export function TeacherDashboard({ setView, logActivity, classes, announcements }) {
   const [activeTool, setActiveTool] = useState(null);
   if (activeTool) return <AIToolDetail toolKey={activeTool} onBack={() => setActiveTool(null)} logActivity={logActivity} />;
 
@@ -16,6 +17,7 @@ export function TeacherDashboard({ setView, logActivity, classes }) {
   return (
     <div className="px-4 md:px-8 py-6 md:py-8 max-w-5xl mx-auto">
       <PageHeader title="Teacher Dashboard" subtitle="Everything for planning, assessing, and tracking your classes." />
+<AnnouncementBanner announcements={announcements} />
       {classes.length === 0 && (
         <Card className="p-4 mb-5 flex items-center justify-between flex-wrap gap-2">
           <p className="text-sm" style={{ color: C.slate }}>You haven't created a class yet.</p>
