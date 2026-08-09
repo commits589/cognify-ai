@@ -134,7 +134,7 @@ export default function App() {
   useEffect(() => {
     if (!user) return;
     getFeatureFlags().then(setFeatureFlagsState).catch(() => {});
-    listAnnouncements().then(setAnnouncements).catch(() => {});
+    listAnnouncements().then((a) => { console.log("ANNOUNCEMENTS:", a); setAnnouncements(a); }).catch((e) => console.log("ANNOUNCEMENTS ERROR:", e));
     listClasses().then(setClasses).catch(() => {});
     if (user.role === "admin") {
       listAllUsers().then((users) => setDemoUsersState(users.filter((u) => u.id !== user.uid).map((u) => ({ ...u, uid: u.id, grade: u.gradeLevel })))).catch(() => {});
